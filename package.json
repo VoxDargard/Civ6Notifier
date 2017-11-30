@@ -17,5 +17,6 @@
     "node",
     "express",
     "ifttt"
-  ]
+  ],
+  "license": "MIT"
 }
