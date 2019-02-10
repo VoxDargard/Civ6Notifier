@@ -65,6 +65,8 @@ function checkForTrigger(trigger){
     request(baseURL + triggerEvent + withKey + iftttId, function (error, response, body) {
       if (!error && response.statusCode == 200) {
         console.log(body); // Show the response from IFTTT
+      } else {
+        console.log(baseURL + triggerEvent + withKey + iftttId + ": "+error); // Show the error
       }
     });
   }
