@@ -75,7 +75,7 @@ function checkForTrigger( server, playerId ){
   
   request({ 
     uri: server,
-    body: { "content":"Hey <@"+ playerId + ">, it's time to take your turn" },
+    body: { "content":"Hey <@"+ playerId + ">, it's time to take your turn!" },
     json: true,
     method: 'POST'
   }, function (error, response, body) {
