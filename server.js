@@ -21,6 +21,13 @@ app.use(express.static('views'));
 app.use(bodyParser.json());
 
 
+var playerMapping = {
+    somin: '12345',
+    testName: 'testvalue'
+};
+
+
+
 // Handle requests from IFTTT
 app.post("/", upload.array(),function (request, response) {
   console.log("Request received from IFTTT");
@@ -30,11 +37,12 @@ app.post("/", upload.array(),function (request, response) {
 //  }
   
   console.log( request.body );
+  console.log ( request.body.value1);
+  var myVal = playerMapping[request.body.value1];
+  console.log( myVal);
   
-  var body = JSON.parse( request.body);
   
-  var body = JSON.stringify(request.body)
-  console.log ( body);
+  
   console.log("Done triggering.");
   response.end();  
 });
