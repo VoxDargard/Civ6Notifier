@@ -23,9 +23,18 @@ app.use(express.static('views'));
 app.post("/", function (request, response) {
   console.log("Request received from IFTTT");
   console.log("Triggering multiple IFTTT services");
-  for(var i=0; i<10; i++){
-    checkForTrigger(i);
-  }
+  //for(var i=0; i<10; i++){
+  //  checkForTrigger(i);
+  //}
+  
+  request( "https://discordapp.com/api/webhooks/557468076115886110/xbdf2p2RFMJR4XFi-oCo1lDoaVX8lujLAQIZemtPT2BH9g9ly4m25t7FUSqORj3-vJK1", function ( error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log(body); // Show the response from IFTTT
+      } else {
+        console.log(baseURL + withKey + iftttId + ": "+error); // Show the error
+      }
+    });
+  
   console.log("Done triggering.");
   response.end();  
 });
