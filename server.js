@@ -8,26 +8,18 @@ var request = require('request');
 var multer = require('multer'); // v1.0.5
 
 var app = express();
-var iftttId;
+
 var baseURL = "https://maker.ifttt.com/trigger/";
 var withKey = "/with/key/";
+var iftttId = "clazG-wwuSPmF8lae-fY3v";
 
+var upload = multer();
 
-
-// Get the Id from IFTTT Maker URL
-//if(!process.env.IFTTT_MAKER_URL)
-//  console.log("You need to set your IFTTT Maker URL - copy the URL from https://ifttt.com/services/maker/settings into the .env file against 'IFTTT_MAKER_URL'");
-//else
-  iftttId = process.env.IFTTT_MAKER_URL.split('https://maker.ifttt.com/use/')[1];
-iftttId = "clazG-wwuSPmF8lae-fY3v";
-console.log(iftttId); 
 // Show the homepage
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('views'));
 app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-var upload = multer();
 
 // Handle requests from IFTTT
 app.post("/", upload.array(),function (request, response) {
@@ -36,10 +28,13 @@ app.post("/", upload.array(),function (request, response) {
 //  for(var i=0; i<10; i++){
     checkForTrigger(0);
 //  }
-   
-//  console.log( request.body );
-
   
+  console.log( request.body );
+  
+  var body = JSON.parse( request.body);
+  
+  var body = JSON.stringify(request.body)
+  console.log ( body);
   console.log("Done triggering.");
   response.end();  
 });
