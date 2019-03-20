@@ -8,6 +8,7 @@ var app = express();
 var iftttId;
 var baseURL = "https://maker.ifttt.com/trigger/";
 var withKey = "/with/key/";
+var bodyParser = require('body-parser');
 
 // Get the Id from IFTTT Maker URL
 //if(!process.env.IFTTT_MAKER_URL)
@@ -19,6 +20,7 @@ console.log(iftttId);
 // Show the homepage
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('views'));
+app.use(bodyParser.json());
 
 // Handle requests from IFTTT
 app.post("/", function (request, response) {
@@ -28,6 +30,7 @@ app.post("/", function (request, response) {
     checkForTrigger(0);
 //  }
    
+  console.log("body " + JSON.stringify(request.body));
 
   console.log("Done triggering.");
   response.end();  
