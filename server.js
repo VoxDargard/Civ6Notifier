@@ -23,20 +23,11 @@ app.use(express.static('views'));
 app.post("/", function (request, response) {
   console.log("Request received from IFTTT");
   console.log("Triggering multiple IFTTT services");
-  //for(var i=0; i<10; i++){
-  //  checkForTrigger(i);
-  //}
+  for(var i=0; i<10; i++){
+    checkForTrigger(i);
+  }
    
-  request("https://maker.ifttt.com/trigger/cloud-01/with/key/clazG-wwuSPmF8lae-fY3v", function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log(body); // Show the response from IFTTT
-      } else {
-        console.log("https://maker.ifttt.com/trigger/cloud-01/with/key/clazG-wwuSPmF8lae-fY3v: "+error); // Show the error
-      }
-    });
-  
-  
-  
+
   console.log("Done triggering.");
   response.end();  
 });
