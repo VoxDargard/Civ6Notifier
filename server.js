@@ -29,19 +29,19 @@ var playerMapping = {
 
 
 // Handle requests from IFTTT
-app.post("/", upload.array(),function (request, response) {
+app.post("/", upload.array(),function (req, response) {
   console.log("Request received from IFTTT");
   console.log("Triggering multiple IFTTT services");
 //  for(var i=0; i<10; i++){
-    checkForTrigger(0);
+    
 //  }
   
-  console.log( request.body );
-  console.log ( request.body.value1);
-  var myVal = playerMapping[request.body.value1];
+  console.log( req.body );
+  console.log ( req.body.value1);
+  var myVal = playerMapping[req.body.value1];
   console.log( myVal);
   
-  
+  checkForTrigger( JSON.stringify(req.body) );
   
   console.log("Done triggering.");
   response.end();  
@@ -53,12 +53,13 @@ var listener = app.listen(process.env.PORT, function () {
 });
 
 // Loops through each event and where it finds a value for it in .env it will make a request to IFTTT using it
-function checkForTrigger(trigger){
+function checkForTrigger( newBody ){
   var triggerEvent;
+  
   
   triggerEvent = "somin"
   if(triggerEvent){
-    console.log(triggerEvent);
+    console.log("Event: " + triggerEvent + " Body: " + newBody);
     // Make a request to baseURL + triggerEvent + withKey + iftttId, which is the complete IFTTT Maker Request URL
     request(baseURL + triggerEvent + withKey + iftttId, function (error, response, body) {
       if (!error && response.statusCode == 200) {
