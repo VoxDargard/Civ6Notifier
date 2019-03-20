@@ -13,7 +13,7 @@ var baseURL = "https://maker.ifttt.com/trigger/";
 var withKey = "/with/key/";
 
 
-var upload = multer();
+
 // Get the Id from IFTTT Maker URL
 //if(!process.env.IFTTT_MAKER_URL)
 //  console.log("You need to set your IFTTT Maker URL - copy the URL from https://ifttt.com/services/maker/settings into the .env file against 'IFTTT_MAKER_URL'");
@@ -25,8 +25,9 @@ console.log(iftttId);
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('views'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+//app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
+var upload = multer();
 
 // Handle requests from IFTTT
 app.post("/", upload.array(),function (request, response) {
