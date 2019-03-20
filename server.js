@@ -29,7 +29,11 @@ var playerMapping = {
   TheLaggingMan: '362278244017504258',
   DarkCiv: '327709450058334208',
   'Lord Calderon': '366708961338195971',
-  'Dr.Friedlich_Loesung': '',
+  'Dr.Friedlich_Loesung': '288766117827182604',
+  'Sol': '231450321925177354',
+  'Jesaya':'326480164827561984',
+  'funny_noodles':'362281149218947073'
+  
 };
 
 var serverMapping = {
