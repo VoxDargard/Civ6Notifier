@@ -26,7 +26,7 @@ app.post("/", function (request, response) {
   //for(var i=0; i<10; i++){
   //  checkForTrigger(i);
   //}
-  
+   
   request( "https://discordapp.com/api/webhooks/557468076115886110/xbdf2p2RFMJR4XFi-oCo1lDoaVX8lujLAQIZemtPT2BH9g9ly4m25t7FUSqORj3-vJK1", function ( error, response, body) {
       if (!error && response.statusCode == 200) {
         console.log(body); // Show the response from IFTTT
