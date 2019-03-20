@@ -26,6 +26,11 @@ var playerMapping = {
     testName: 'testvalue'
 };
 
+var serverMapping = {
+  'Cloud-01': 'https://discordapp.com/api/webhooks/557468076115886110/xbdf2p2RFMJR4XFi-oCo1lDoaVX8lujLAQIZemtPT2BH9g9ly4m25t7FUSqORj3-vJK1',
+  'Cloud-02_CGG_KAKEBUKE': 'https://discordapp.com/api/webhooks/557468076115886110/xbdf2p2RFMJR4XFi-oCo1lDoaVX8lujLAQIZemtPT2BH9g9ly4m25t7FUSqORj3-vJK1'
+};
+
 
 
 // Handle requests from IFTTT
@@ -37,11 +42,11 @@ app.post("/", upload.array(),function (req, response) {
 //  }
   
   console.log( req.body );
-  console.log ( req.body.value1);
-  var myVal = playerMapping[req.body.value1];
-  console.log( myVal);
-  
-  checkForTrigger( JSON.stringify(req.body) );
+  console.log ( req.body.value2);
+  var playerId = playerMapping[req.body.value1];
+  console.log( playerId);
+  serverMapping
+  checkForTrigger( playerId );
   
   console.log("Done triggering.");
   response.end();  
@@ -53,10 +58,25 @@ var listener = app.listen(process.env.PORT, function () {
 });
 
 // Loops through each event and where it finds a value for it in .env it will make a request to IFTTT using it
-function checkForTrigger( newBody ){
+function checkForTrigger( server, playerId ){
   var triggerEvent;
   
+  request({ 
+    uri: server,
+    body: { "content":"Hey @"+ playerId + ", it's time to take your turn" },
+    json: true,
+    method: 'POST'
+  }, function (error, response, body) {
+     if (!error && response.statusCode == 200) {
+       console.log(body); // Show the response from Habitica
+     }
+    else {
+      console.log(response.statusCode);
+      console.log(body);
+    }
+  });
   
+  /*
   triggerEvent = "somin"
   if(triggerEvent){
     console.log("Event: " + triggerEvent + " Body: " + newBody);
@@ -68,5 +88,5 @@ function checkForTrigger( newBody ){
         console.log(baseURL + triggerEvent + withKey + iftttId + ": "+error); // Show the error
       }
     });
-  }
+  }*/
 }
