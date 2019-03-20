@@ -27,13 +27,15 @@ app.post("/", function (request, response) {
   //  checkForTrigger(i);
   //}
    
-  request( "https://discordapp.com/api/webhooks/557468076115886110/xbdf2p2RFMJR4XFi-oCo1lDoaVX8lujLAQIZemtPT2BH9g9ly4m25t7FUSqORj3-vJK1", function ( error, response, body) {
+  request("https://maker.ifttt.com/trigger/cloud-01/with/key/clazG-wwuSPmF8lae-fY3v", function (error, response, body) {
       if (!error && response.statusCode == 200) {
         console.log(body); // Show the response from IFTTT
       } else {
-        console.log(baseURL + withKey + iftttId + ": "+error); // Show the error
+        console.log("https://maker.ifttt.com/trigger/cloud-01/with/key/clazG-wwuSPmF8lae-fY3v: "+error); // Show the error
       }
     });
+  
+  
   
   console.log("Done triggering.");
   response.end();  
