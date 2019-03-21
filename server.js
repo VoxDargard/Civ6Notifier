@@ -39,7 +39,8 @@ var playerMapping = {
 var serverMapping = {
   "Cloud-01": 'https://discordapp.com/api/webhooks/557468076115886110/xbdf2p2RFMJR4XFi-oCo1lDoaVX8lujLAQIZemtPT2BH9g9ly4m25t7FUSqORj3-vJK1',
   'Cloud-02_CGG_KAKEBUKE': 'https://discordapp.com/api/webhooks/557822028015730703/kvzq_y2PCS0WKG5xJRB2Ay15vTOPn3pVXXUXsSap_IMlHC8jKT8Ls7TbbdAXkgNkcd-g',
-  "somin's Game": 'https://discordapp.com/api/webhooks/558026909577904139/_Fay9CuO_XDcspX_mmNXERgthwO1FRXx7XG7q8_XtE7JHvzlLvvZ0tuyYwrRnhVfPAM4'
+  "somin's Game": 'https://discordapp.com/api/webhooks/558026909577904139/_Fay9CuO_XDcspX_mmNXERgthwO1FRXx7XG7q8_XtE7JHvzlLvvZ0tuyYwrRnhVfPAM4',
+  "TestGame": 'https://discordapp.com/api/webhooks/558026909577904139/_Fay9CuO_XDcspX_mmNXERgthwO1FRXx7XG7q8_XtE7JHvzlLvvZ0tuyYwrRnhVfPAM4'
 }; 
  
 
