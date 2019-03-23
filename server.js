@@ -32,7 +32,6 @@ var serverMapping = {
  
 var debugserver = 'https://discordapp.com/api/webhooks/558026909577904139/_Fay9CuO_XDcspX_mmNXERgthwO1FRXx7XG7q8_XtE7JHvzlLvvZ0tuyYwrRnhVfPAM4';
 
-// Handle requests from IFTTT
 app.post("/", upload.array(),function (req, response) {
   
   console.log( req.body );
@@ -44,22 +43,27 @@ app.post("/", upload.array(),function (req, response) {
   console.log( playerId);
   var turnNumber = req.body.value3;
   
-  checkForTrigger( server, playerId, turnNumber, gamename);
-  
-  console.log("Done triggering.");
+  if ( playerId && server )
+  {
+    var content = "Hey <@"+ playerId + ">, it's time to take your turn #" + turnNumber + " in '" + gamename +"'!";
+    sendMessage( server, content);
+    console.log("Done triggering.");
+  }
+  else
+  {
+    var content = "Error in data, missing game or player?\n" + req.body;
+    sendMessage( debugserver,content );
+    console.log( content );
+  }
+
   response.end();  
 });
 
-// listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
-  console.log('Your app is listening on port ' + listener.address().port);
-});
-
-function checkForTrigger( server, playerId, turnNumber ,gamename ){
-  
-  request({ 
+function sendMessage( server, content )
+{
+	request({ 
     uri: server,
-    body: { "content":"Hey <@"+ playerId + ">, it's time to take your turn #" + turnNumber + " in '" + gamename +"'!" },
+    body: { "content":content},
     json: true,
     method: 'POST'
   }, function (error, response, body) {
@@ -72,3 +76,8 @@ function checkForTrigger( server, playerId, turnNumber ,gamename ){
     }
   });
 }
+
+// listen for requests :)
+var listener = app.listen(process.env.PORT, function () {
+  console.log('Your app is listening on port ' + listener.address().port);
+});
