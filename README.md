@@ -4,9 +4,6 @@
 1. Remix this project
 2. Make it private so people can't see your usernames and such
 3. Go to server.js
-4. Add the players to the "playerMapping" array `(see below how to copy the discord id)`
-5. Add the game name and the corresponding Webhook url from discord to the "servermapping" array `(see below for more how to on that)`
-6. In the Civ settings (accessible thorugh the main menu) enter the webhook 
-
-![](https://cdn.glitch.com/4761356a-9369-4e79-9d1e-a8306e8c00b5%2FifttMany.png)
-
+4. Add the players to the "playerMapping" array [(How to get the discord user ID)](https://support.discordapp.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-)
+5. Add the game name and the corresponding Webhook url from discord to the "servermapping" array [(How to create a webhook bot in discord)](https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks)
+6. In the Civ settings (accessible thorugh the main menu) enter the webhook link in this format: https://yourProjectName.glitch.me
