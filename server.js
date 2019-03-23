@@ -40,8 +40,9 @@ app.post("/", upload.array(),function (req, response) {
   var playerId = playerMapping[req.body.value2];
   var server = serverMapping[req.body.value1];
   console.log( playerId);
+  var turnNumber = req.body.value3;
   
-  checkForTrigger( server, playerId );
+  checkForTrigger( server, playerId, turnNumber);
   
   console.log("Done triggering.");
   response.end();  
@@ -52,12 +53,11 @@ var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
 
-// Loops through each event and where it finds a value for it in .env it will make a request to IFTTT using it
-function checkForTrigger( server, playerId ){
+function checkForTrigger( server, playerId, turnNumber ){
   
   request({ 
     uri: server,
-    body: { "content":"Hey <@"+ playerId + ">, it's time to take your turn!" },
+    body: { "content":"Hey <@"+ playerId + ">, it's time to take your turn #" + turnNumber + "!" },
     json: true,
     method: 'POST'
   }, function (error, response, body) {
