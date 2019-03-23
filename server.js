@@ -7,19 +7,31 @@ var upload = multer();
 app.use(express.static('views'));
 app.use(bodyParser.json());
 
+
+// ############################################################
 // Map the Steam name to the discord Id to @mention the players
+//
 var playerMapping = {
   'steamName1': '12345DiscordId1234',
   'steamName2': '12345DiscordId1234'
 };
 
+// #################################################################
 // Map game name to different bots so you can have channels per game
+//  
 var serverMapping = {
   "CloudGameName": 'https://discordapp.com/...etc webhooklinkhere',
   "DifferentCloudGame": 'https://discordapp.com/...etc webhooklinkhere'
 }; 
- 
+
+// #################################################################
+// Debug webhook if something goes wrong ( eg server or player is not found in arrays above )
+//
 var debugserver = 'https://...webhook link for when things go wrong';
+
+ 
+
+
 
 app.post("/", upload.array(),function (req, response) {
   
