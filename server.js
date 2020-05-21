@@ -12,8 +12,8 @@ app.use(bodyParser.json());
 // Map the Steam name to the discord Id to @mention the players
 //
 var playerMapping = {
-  'steamName1': '12345DiscordId1234',
-  'steamName2': '12345DiscordId1234'
+  'Vox': '69287046484590592',
+  'esol927': '231933192548909056'
 };
 
 // #################################################################
