@@ -15,13 +15,15 @@ var playerMapping = {
   'Vox': '69287046484590592',
   'esol927': '231933192548909056'
   'Single Doubt': '622509633931575307'
+  'Carneggy' : '235319671329521665'
+  'Kaamoku' : '351394814962434068'
 };
 
 // #################################################################
 // Map game name to different bots so you can have channels per game
 //  
 var serverMapping = {
-  "CloudGameName": 'https://discordapp.com/...etc webhooklinkhere',
+  "Vox's Game": 'https://discordapp.com/api/webhooks/713050609913430058/6ZCO-2Xa_pmxEt3km70UHwcH0rY5z9lzREogdsikXnwiHyR-3iP_OKWp30TSmCUFvWH7',
   "DifferentCloudGame": 'https://discordapp.com/...etc webhooklinkhere'
 }; 
 
