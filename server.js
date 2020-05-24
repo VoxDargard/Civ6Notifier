@@ -23,13 +23,13 @@ var playerMapping = {
 // Map game name to different bots so you can have channels per game
 //  
 var serverMapping = {
-  "game1": 'https://discordapp.com/api/webhooks/713050609913430058/6ZCO-2Xa_pmxEt3km70UHwcH0rY5z9lzREogdsikXnwiHyR-3iP_OKWp30TSmCUFvWH7'
+  "Vox\'s game!'": 'https://discordapp.com/api/webhooks/713050609913430058/6ZCO-2Xa_pmxEt3km70UHwcH0rY5z9lzREogdsikXnwiHyR-3iP_OKWp30TSmCUFvWH7'
 }; 
 
 // #################################################################
 // Debug webhook if something goes wrong ( eg server or player is not found in arrays above )
 //
-var debugserver = 'https://discordapp.com/api/webhooks/713960558600388629/ifqUd9P7glkuR8N3gN-MWCxrz7YM-ABeFDVUcp3whxu3E5DcROqxNm9U2xglTbr0zz-0';
+var debugserver = 'https://discordapp.com/api/webhooks/713050609913430058/6ZCO-2Xa_pmxEt3km70UHwcH0rY5z9lzREogdsikXnwiHyR-3iP_OKWp30TSmCUFvWH7';
 
  
 
@@ -54,7 +54,8 @@ app.post("/", upload.array(),function (req, response) {
   }
   else
   {
-    var content = "Error in data, missing game or player?\n" + req.body;
+    var content = "Hey <@"+ playerId + ">, it's time to take your turn #" + turnNumber + " in '" + gamename +"'!";
+//    var content = "Testing pinging <@"+ playerId + "> Error in data, missing game or player?\n" + req.body;
     sendMessage( debugserver,content );
     console.log( content );
   }
